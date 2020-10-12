@@ -48,7 +48,7 @@ function createBoard() {
         const square = document.createElement('div')
         //put square in grid 
         grid.appendChild(square)
-        //put square in sqaures array
+        //put square in squares array
         squares.push(square)
 
         if (layout[i] === 0) {
@@ -62,3 +62,25 @@ function createBoard() {
     }
 }
 createBoard()
+
+//up key - 38
+// left - 37
+// right - 39
+
+
+//starting position of pacman 
+let pacmanCurrentIndex = 490
+squares[pacmanCurrentIndex].classList.add('pacman')
+
+function control(e) {
+    if (e.keyCode === 40) {
+        console.log('pressed down')
+    } else if (e.keyCode === 38) {
+        console.log('pressed up')
+    } else if (e.keyCode === 37) {
+        console.log('pressed left')
+    } else if (e.keyCode === 39) {
+        console.log('pressed right')
+    }
+}
+document.addEventListener('keyup', control)
