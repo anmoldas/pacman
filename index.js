@@ -63,24 +63,35 @@ function createBoard() {
 }
 createBoard()
 
-//up key - 38
+// down - 40
+// up key - 38
 // left - 37
 // right - 39
-
 
 //starting position of pacman 
 let pacmanCurrentIndex = 490
 squares[pacmanCurrentIndex].classList.add('pacman')
 
 function control(e) {
-    if (e.keyCode === 40) {
+    squares[pacmanCurrentIndex].classList.remove('pacman')
+    switch(e.keyCode) {
+        case 40:
         console.log('pressed down')
-    } else if (e.keyCode === 38) {
+        if (pacmanCurrentIndex + width < width * width) pacmanCurrentIndex += width
+        break
+        case 38:
         console.log('pressed up')
-    } else if (e.keyCode === 37) {
+        if (pacmanCurrentIndex - width >=0) pacmanCurrentIndex -= width
+        break
+        case 37: 
         console.log('pressed left')
-    } else if (e.keyCode === 39) {
+        if( pacmanCurrentIndex % width !==0) pacmanCurrentIndex -=1
+        break
+        case 39:
         console.log('pressed right')
+        if(pacmanCurrentIndex % width < width -1) pacmanCurrentIndex +=1
+        break
     }
+    squares[pacmanCurrentIndex].classList.add('pacman')
 }
 document.addEventListener('keyup', control)
